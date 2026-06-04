@@ -80,6 +80,7 @@ In this order:
 | Want to re-run a `run_once_*` script | `chezmoi state delete-bucket --bucket=scriptState && chezmoi apply` |
 | Render dry-run (no scripts execute) | `chezmoi apply --dry-run` |
 | Skip scripts this run | `chezmoi apply --exclude=scripts` |
+| Node CLI fails with "self signed certificate in certificate chain" | Corp TLS-intercepting proxy. Script 05 exports the macOS trust anchors to `~/.config/corp-certs.pem` and `~/.zshrc` exports `NODE_EXTRA_CA_CERTS`. If certs rotate: `security find-certificate -a -p /Library/Keychains/System.keychain > ~/.config/corp-certs.pem` |
 
 ## Not yet in v1 (see plan)
 

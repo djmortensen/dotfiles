@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+trap 'echo "FAILED at line $LINENO in $(basename "$0")" >&2' ERR
+
+log() { printf '[extract-system-certs] %s\n' "$*" >&2; }
+
+# Node-based CLIs (code, npm, gh extension, claude-code) default to their own
+# bundled CA list and don't honor the macOS keychain. On corp Macs that means
+# any TLS-intercepting proxy (Netskope/Zscaler/etc.) breaks them.
+# Export the combined Apple + corp trust anchors so NODE_EXTRA_CA_CERTS can
+# point at them. Re-run manually if the corp rotates roots:
+#   security find-certificate -a -p /Library/Keychains/System.keychain >> ~/.config/corp-certs.pem
+OUT="$HOME/.config/corp-certs.pem"
+mkdir -p "$(dirname "$OUT")"
+
+log "exporting trust anchors to $OUT"
+{
+  security find-certificate -a -p /System/Library/Keychains/SystemRootCertificates.keychain
+  security find-certificate -a -p /Library/Keychains/System.keychain
+} > "$OUT"
+
+n=$(grep -c 'BEGIN CERTIFICATE' "$OUT" || true)
+log "wrote $n trust anchors"
+if [ "$n" -lt 50 ]; then
+  log "WARN: only $n certs — Node-based CLIs may still fail TLS"
+fi
+log "done"

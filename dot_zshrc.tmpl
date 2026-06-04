@@ -1,0 +1,6 @@
+# Trust the macOS keychain (incl. corp roots from MDM) from Node-based CLIs:
+# npm, code, gh extension install, claude-code. Populated by chezmoi script
+# run_onchange_05-extract-system-certs.sh.tmpl.
+if [ -r "$HOME/.config/corp-certs.pem" ]; then
+  export NODE_EXTRA_CA_CERTS="$HOME/.config/corp-certs.pem"
+fi

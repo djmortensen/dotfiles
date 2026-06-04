@@ -4,6 +4,13 @@ trap 'echo "FAILED at line $LINENO in $(basename "$0")" >&2' ERR
 
 log() { printf '[vscode-extensions] %s\n' "$*" >&2; }
 
+# code CLI uses Node's bundled CA list; on corp Macs the local TLS-intercepting
+# proxy re-signs marketplace traffic with a root Node doesn't trust. Script 05
+# extracts the macOS trust anchors into this PEM so Node can find them.
+if [ -r "$HOME/.config/corp-certs.pem" ]; then
+  export NODE_EXTRA_CA_CERTS="$HOME/.config/corp-certs.pem"
+fi
+
 if ! command -v code >/dev/null 2>&1; then
   log "code CLI not on PATH — VSCode cask probably still installing. Re-run 'chezmoi apply' after VSCode finishes installing."
   exit 0
