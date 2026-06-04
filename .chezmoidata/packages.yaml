@@ -18,6 +18,7 @@ packages:
       home: []
     casks:
       common:
+        - rectangle
         - 1password
         - claude-code
         - docker
