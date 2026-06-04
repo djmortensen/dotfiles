@@ -19,7 +19,8 @@ packages:
       common:
         - rectangle
         - 1password
-        - 1password-cli        - claude-code
+        - 1password-cli
+        - claude-code
         - rancher
         - gcloud-cli
         - gemini
