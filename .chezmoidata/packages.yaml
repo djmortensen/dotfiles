@@ -21,7 +21,7 @@ packages:
         - rectangle
         - 1password
         - claude-code
-        - docker
+        - rancher
         - gcloud-cli
         - gemini
         - ghostty
