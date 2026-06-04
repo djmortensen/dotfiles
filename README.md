@@ -70,6 +70,7 @@ In this order:
 | Pull updates from the other machine | `chezmoi update` |
 | Add a brew formula/cask | edit `.chezmoidata/packages.yaml`, then `chezmoi apply` |
 | Add a VSCode extension | edit `.chezmoidata/vscode-extensions.yaml`, then `chezmoi apply` |
+| Add an npm global package | edit `packages.npm` in `.chezmoidata/packages.yaml`, then `chezmoi apply` |
 | Add an OVO repo to clone | edit `.chezmoidata/repos.yaml`, then `chezmoi apply` |
 
 ## Recovery
