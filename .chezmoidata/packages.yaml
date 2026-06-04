@@ -4,7 +4,6 @@ packages:
   brew:
     formulae:
       common:
-        - 1password-cli
         - chezmoi
         - gemini-cli
         - gh
@@ -20,7 +19,7 @@ packages:
       common:
         - rectangle
         - 1password
-        - claude-code
+        - 1password-cli        - claude-code
         - rancher
         - gcloud-cli
         - gemini
