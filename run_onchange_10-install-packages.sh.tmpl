@@ -6,7 +6,7 @@ log() { printf '[install-packages] %s\n' "$*" >&2; }
 
 log "applying brew bundle for machine={{ .machine }}"
 
-brew bundle --no-lock --file=- <<'EOF'
+brew bundle --file=- <<'EOF'
 {{ range .packages.brew.formulae.common -}}
 brew "{{ . }}"
 {{ end -}}
