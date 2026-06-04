@@ -1,0 +1,54 @@
+# VSCode extensions installed by run_onchange_15-vscode-extensions.sh.tmpl.
+# Inventoried from the home machine on 2026-06-03.
+extensions:
+  common:
+    # Editing / formatting
+    - charliermarsh.ruff
+    - dbaeumer.vscode-eslint
+    - editorconfig.editorconfig
+    - esbenp.prettier-vscode
+    - mechatroner.rainbow-csv
+    - monokai.theme-monokai-pro-vscode
+    - ritwickdey.liveserver
+    # AI assistants
+    - google.geminicodeassist
+    # Containers / remote dev
+    - ms-azuretools.vscode-containers
+    - ms-vscode-remote.remote-containers
+    # Python
+    - ms-python.debugpy
+    - ms-python.python
+    - ms-python.vscode-pylance
+    # Java toolchain
+    - redhat.java
+    - redhat.vscode-xml
+    - vscjava.vscode-gradle
+    - vscjava.vscode-java-debug
+    - vscjava.vscode-java-dependency
+    - vscjava.vscode-java-pack
+    - vscjava.vscode-java-test
+    - vscjava.vscode-maven
+    # Salesforce
+    - financialforce.lana
+    - salesforce.agent-script-language-client
+    - salesforce.apex-language-server-extension
+    - salesforce.salesforce-vscode-slds
+    - salesforce.salesforcedx-einstein-gpt
+    - salesforce.salesforcedx-vscode
+    - salesforce.salesforcedx-vscode-agents
+    - salesforce.salesforcedx-vscode-apex
+    - salesforce.salesforcedx-vscode-apex-debugger
+    - salesforce.salesforcedx-vscode-apex-log
+    - salesforce.salesforcedx-vscode-apex-oas
+    - salesforce.salesforcedx-vscode-apex-replay-debugger
+    - salesforce.salesforcedx-vscode-apex-testing
+    - salesforce.salesforcedx-vscode-core
+    - salesforce.salesforcedx-vscode-lightning
+    - salesforce.salesforcedx-vscode-lwc
+    - salesforce.salesforcedx-vscode-metadata
+    - salesforce.salesforcedx-vscode-org
+    - salesforce.salesforcedx-vscode-org-browser
+    - salesforce.salesforcedx-vscode-services
+    - salesforce.salesforcedx-vscode-soql
+    - salesforce.salesforcedx-vscode-visualforce
+    - salesforce.sfdx-code-analyzer-vscode

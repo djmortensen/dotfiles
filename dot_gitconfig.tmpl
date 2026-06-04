@@ -1,0 +1,12 @@
+[user]
+    name  = {{ .git.name }}
+    email = {{ .git.email }}
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = false
+
+[push]
+    autoSetupRemote = true

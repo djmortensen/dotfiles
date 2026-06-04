@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+trap 'echo "FAILED at line $LINENO in $(basename "$0")" >&2' ERR
+
+log() { printf '[install-homebrew] %s\n' "$*" >&2; }
+
+if command -v brew >/dev/null 2>&1; then
+  log "homebrew already installed at $(command -v brew) — skipping"
+  exit 0
+fi
+
+log "installing homebrew (non-interactive)…"
+NONINTERACTIVE=1 /bin/bash -c \
+  "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+log "done: $(brew --version | head -1)"

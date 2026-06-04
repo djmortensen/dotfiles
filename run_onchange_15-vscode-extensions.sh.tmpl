@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+trap 'echo "FAILED at line $LINENO in $(basename "$0")" >&2' ERR
+
+log() { printf '[vscode-extensions] %s\n' "$*" >&2; }
+
+if ! command -v code >/dev/null 2>&1; then
+  log "code CLI not on PATH — VSCode cask probably still installing. Re-run 'chezmoi apply' after VSCode finishes installing."
+  exit 0
+fi
+
+installed=$(code --list-extensions)
+
+install_if_missing() {
+  local ext="$1"
+  if ! grep -qix "$ext" <<<"$installed"; then
+    log "installing $ext"
+    code --install-extension "$ext" --force >/dev/null
+  fi
+}
+
+{{ range .extensions.common -}}
+install_if_missing "{{ . }}"
+{{ end -}}
+
+log "done"

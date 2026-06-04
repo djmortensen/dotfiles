@@ -1,0 +1,29 @@
+# Brew formulae + casks installed by run_onchange_10-install-packages.sh.tmpl.
+# Inventoried from the home machine on 2026-06-03. Adjust as the toolset evolves.
+packages:
+  brew:
+    formulae:
+      common:
+        - 1password-cli
+        - chezmoi
+        - gemini-cli
+        - gh
+        - gnupg
+        - jq
+        - mise
+        - pipx
+        - pnpm
+        - python@3.10
+      work: []
+      home: []
+    casks:
+      common:
+        - 1password
+        - claude-code
+        - docker
+        - gcloud-cli
+        - gemini
+        - ghostty
+        - visual-studio-code
+      work: []
+      home: []

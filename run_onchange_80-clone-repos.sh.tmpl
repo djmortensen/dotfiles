@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+trap 'echo "FAILED at line $LINENO in $(basename "$0")" >&2' ERR
+
+log() { printf '[clone-repos] %s\n' "$*" >&2; }
+
+base="{{ .ovo.base }}"
+base="${base/#\~/$HOME}"
+mkdir -p "$base"
+
+if ! command -v gh >/dev/null 2>&1; then
+  log "gh not installed yet — should come from brew bundle. Skipping."
+  exit 0
+fi
+
+if ! gh auth status >/dev/null 2>&1; then
+  log "gh not authenticated. Run:"
+  log "    gh auth login --hostname github.com --git-protocol https --web"
+  log "then re-run 'chezmoi apply'. Skipping clone for now."
+  exit 0
+fi
+
+clone_if_missing() {
+  local name="$1" url="$2"
+  local dest="$base/$name"
+  if [[ -d "$dest/.git" ]]; then
+    log "$name already cloned"
+    return
+  fi
+  log "cloning $name"
+  git clone "$url" "$dest"
+}
+
+{{ range .ovo.list -}}
+clone_if_missing "{{ .name }}" "{{ .url }}"
+{{ end -}}
+
+log "done"

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+trap 'echo "FAILED at line $LINENO in $(basename "$0")" >&2' ERR
+
+log() { printf '[install-packages] %s\n' "$*" >&2; }
+
+log "applying brew bundle for machine={{ .machine }}"
+
+brew bundle --no-lock --file=- <<'EOF'
+{{ range .packages.brew.formulae.common -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range (index .packages.brew.formulae .machine) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range .packages.brew.casks.common -}}
+cask "{{ . }}"
+{{ end -}}
+{{ range (index .packages.brew.casks .machine) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
+
+log "done"

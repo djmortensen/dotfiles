@@ -1,0 +1,9 @@
+# OVO repos cloned by run_onchange_80-clone-repos.sh.tmpl.
+# HTTPS URLs to avoid the SSH-key bootstrap dependency on first run; gh's
+# credential helper handles auth once `gh auth login` is complete.
+ovo:
+  base: ~/ovo-repos
+  list:
+    - { name: ava-advisor-connect,  url: https://github.com/ovotech/ava-advisor-connect.git }
+    - { name: cip-salesforce-orion, url: https://github.com/ovotech/cip-salesforce-orion.git }
+    - { name: ovo-claude-plugins,   url: https://github.com/ovotech/ovo-claude-plugins.git }

@@ -1,0 +1,8 @@
+{{- /* Prompt once on init, persist to ~/.config/chezmoi/chezmoi.toml */ -}}
+{{- $machine := promptStringOnce . "machine" "Which machine? (work or home)" "home" -}}
+
+[data]
+    machine = {{ $machine | quote }}
+    [data.git]
+        name  = "Daniel Mortensen"
+        email = {{ if eq $machine "work" }}"daniel.mortensen@ovo.com"{{ else }}"daniel.j.mortensen@gmail.com"{{ end }}
