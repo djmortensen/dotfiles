@@ -12,7 +12,7 @@ chezmoi-managed dev environment bootstrap. v1 — minimal viable; expanded over 
 ### One-liner
 
 ````bash
-sh -c "$(curl -fsSL get.chezmoi.io)" -- init --apply dj-morty/dotfiles
+sh -c "$(curl -fsSL get.chezmoi.io)" -- init --apply dj-mortensen/dotfiles
 ````
 
 chezmoi will:
