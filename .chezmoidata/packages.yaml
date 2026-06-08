@@ -13,6 +13,7 @@ packages:
         - pipx
         - pnpm
         - python@3.10
+        - yarn
       work: []
       home: []
     casks:
@@ -20,6 +21,7 @@ packages:
         - rectangle
         - 1password
         - 1password-cli
+        - antigravity-cli
         - claude-code
         - rancher
         - gcloud-cli
