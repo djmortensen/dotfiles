@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+trap 'echo "FAILED at line $LINENO in $(basename "$0")" >&2' ERR
+
+log() { printf '[macos-defaults] %s\n' "$*" >&2; }
+
+log "dock: autohide on"
+defaults write com.apple.dock autohide -bool true
+
+if ! command -v dockutil >/dev/null 2>&1; then
+  log "dockutil not on PATH yet — re-run 'chezmoi apply' after brew bundle finishes"
+  exit 0
+fi
+
+log "dock: setting persistent apps"
+dockutil --remove all --no-restart >/dev/null
+for app in \
+  "/Applications/Google Chrome.app" \
+  "/Applications/Visual Studio Code.app" \
+  "/Applications/Ghostty.app"; do
+  if [ -d "$app" ]; then
+    dockutil --add "$app" --no-restart >/dev/null
+  else
+    log "skipping missing app: $app"
+  fi
+done
+
+killall Dock
+log "done"

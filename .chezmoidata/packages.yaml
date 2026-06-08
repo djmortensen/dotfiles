@@ -5,6 +5,7 @@ packages:
     formulae:
       common:
         - chezmoi
+        - dockutil
         - gemini-cli
         - gh
         - gnupg
