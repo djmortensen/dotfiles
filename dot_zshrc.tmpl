@@ -4,3 +4,7 @@
 if [ -r "$HOME/.config/corp-certs.pem" ]; then
   export NODE_EXTRA_CA_CERTS="$HOME/.config/corp-certs.pem"
 fi
+
+eval "$(mise activate zsh)"
+eval "$(starship init zsh)"
+

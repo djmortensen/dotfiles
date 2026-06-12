@@ -11,9 +11,11 @@ packages:
         - gnupg
         - jq
         - mise
+        - neovim
         - pipx
         - pnpm
         - python@3.10
+        - starship
         - yarn
       work: []
       home: []
@@ -29,6 +31,7 @@ packages:
         - gemini
         - ghostty
         - visual-studio-code
+        - zulu@17 # Java runtime for Salesforce Apex Language Server (VS Code extension)
       work: []
       home: []
   npm:
